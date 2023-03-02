@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Dash from './components/Dash';
+import TaskCard from './components/TaskCard';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import NewTask from './pages/NewTask';
 
 function App() {
+  const n = useSelector((state) => state.tasks.taskCount)
+  const taskCards = []
+  for(let i = 0; i < n; i++) {
+    taskCards.push(<TaskCard index = {i}/>)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Dash/>
+      {taskCards} */}
+      <NewTask/>
     </div>
   );
 }
